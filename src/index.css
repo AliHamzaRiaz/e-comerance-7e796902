@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Editorial fashion palette — warm bone, espresso, ember accent */
+    --background: 36 33% 96%;
+    --foreground: 20 14% 12%;
+
+    --card: 36 33% 98%;
+    --card-foreground: 20 14% 12%;
+
+    --popover: 36 33% 98%;
+    --popover-foreground: 20 14% 12%;
+
+    --primary: 20 14% 12%;
+    --primary-foreground: 36 33% 96%;
+
+    --secondary: 32 22% 88%;
+    --secondary-foreground: 20 14% 12%;
+
+    --muted: 32 18% 90%;
+    --muted-foreground: 20 8% 38%;
+
+    --accent: 18 65% 48%;
+    --accent-foreground: 36 33% 96%;
+
+    --destructive: 0 70% 45%;
+    --destructive-foreground: 36 33% 96%;
+
+    --border: 30 15% 85%;
+    --input: 30 15% 85%;
+    --ring: 20 14% 12%;
+
+    --radius: 0;
+
+    /* Brand-specific tokens */
+    --bone: 36 33% 96%;
+    --cream: 32 30% 92%;
+    --sand: 28 25% 80%;
+    --espresso: 20 14% 12%;
+    --ember: 18 65% 48%;
+    --clay: 22 35% 55%;
+
+    --gradient-warm: linear-gradient(180deg, hsl(36 33% 96%) 0%, hsl(32 30% 92%) 100%);
+    --gradient-fade: linear-gradient(180deg, transparent 0%, hsl(20 14% 12% / 0.6) 100%);
+    --shadow-soft: 0 30px 60px -30px hsl(20 14% 12% / 0.25);
+    --shadow-frame: 0 1px 0 hsl(20 14% 12% / 0.08);
+
+    --transition-silk: cubic-bezier(0.22, 1, 0.36, 1);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    @apply antialiased;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-feature-settings: "ss01", "ss02";
+  }
+  ::selection {
+    background: hsl(var(--ember));
+    color: hsl(var(--bone));
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: 'Fraunces', serif;
+    font-optical-sizing: auto;
+    letter-spacing: -0.02em;
+  }
+  .font-sans {
+    font-family: 'Inter', sans-serif;
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+  .marquee {
+    animation: marquee 40s linear infinite;
+  }
+  .reveal {
+    animation: reveal 1.2s var(--transition-silk) both;
+  }
+  .reveal-delay-1 { animation-delay: 0.1s; }
+  .reveal-delay-2 { animation-delay: 0.25s; }
+  .reveal-delay-3 { animation-delay: 0.4s; }
+
+  .product-img {
+    transition: transform 1.2s var(--transition-silk);
+  }
+  .group:hover .product-img {
+    transform: scale(1.04);
+  }
+
+  .underline-grow {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.5s var(--transition-silk);
+  }
+  .underline-grow:hover {
+    background-size: 100% 1px;
+  }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
